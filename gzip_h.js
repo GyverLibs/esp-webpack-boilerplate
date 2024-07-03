@@ -1,4 +1,4 @@
-const p = require('./package.json');
+const pkg = require('./package.json');
 const in_folder = './dist/index';
 const out_folder = './dist/gzip';
 
@@ -38,7 +38,7 @@ async function compile() {
 #include <Arduino.h>
 
 /*
-    ${p.name}.h
+    ${pkg.name}.h v${pkg.version}
     index: ${index_len} bytes
     script: ${script_len} bytes
     style: ${style_len} bytes
@@ -49,12 +49,14 @@ async function compile() {
 `;
 
     function addBin(fname, gzip) {
-        let code = `\r\nconst uint8_t ${p.name}_${fname}[] PROGMEM = {`;
+        let code = '\r\n' + `const uint8_t ${pkg.name}_${fname}[] PROGMEM = {`;
         let data = fs.readFileSync(gzip).toString('hex');
         for (let i = 0; i < data.length; i += 2) {
-            code += '0x' + data[i] + data[i + 1] + ', ';
+            if (i % 48 == 0) code += '\r\n    ';
+            code += '0x' + data[i] + data[i + 1];
+            if (i < data.length - 2) code += ', ';
         }
-        code += '};\r\n'
+        code += '\r\n};\r\n'
         return code;
     }
 
@@ -62,7 +64,7 @@ async function compile() {
     code += addBin('script', script_gz);
     code += addBin('style', style_gz);
 
-    fs.writeFile(`${out_folder}/${p.name}.h`, code, err => {
+    fs.writeFile(`${out_folder}/${pkg.name}.h`, code, err => {
         if (err) console.error(err);
         else console.log('Done!');
     });
