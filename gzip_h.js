@@ -66,7 +66,7 @@ async function compile() {
 
     fs.writeFile(`${out_folder}/${pkg.name}.h`, code, err => {
         if (err) console.error(err);
-        else console.log('Done!');
+        else console.log('Done! Gzipped to ' + ((index_len + script_len + style_len) / 1024).toFixed(2) + ' kb');
     });
 }
 
