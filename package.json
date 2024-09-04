@@ -1,6 +1,7 @@
 {
   "name": "my_project",
-  "version": "1.0",
+  "title": "App name",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config ./webpack.single.js & webpack --config ./webpack.index.js",

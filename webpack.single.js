@@ -1,4 +1,5 @@
 const path = require('path');
+var PACKAGE = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -43,6 +44,8 @@ module.exports = {
             template: `./src/index.html`,
             filename: `index.html`,
             inject: true,
+            version: PACKAGE.version,
+            title: PACKAGE.title,
         }),
         new HtmlInlineScriptPlugin({
             htmlMatchPattern: [/index.html$/],
