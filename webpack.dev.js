@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require("webpack");
 const PACKAGE = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -37,6 +38,9 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'style.css',
+        }),
+        new webpack.DefinePlugin({
+            PROJECT_VER: JSON.stringify(PACKAGE.version),
         }),
     ],
 

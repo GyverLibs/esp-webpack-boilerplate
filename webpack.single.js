@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require("webpack");
 const PACKAGE = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
@@ -42,16 +43,21 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: `./src/index.html`,
-            filename: `index.html`,
+            // filename: `index.html`,
+            filename: PACKAGE.single_name,
             inject: true,
             version: PACKAGE.version,
             title: PACKAGE.title,
         }),
         new HtmlInlineScriptPlugin({
-            htmlMatchPattern: [/index.html$/],
+            // htmlMatchPattern: [/index.html$/],
+            htmlMatchPattern: [new RegExp(`${PACKAGE.single_name}$`)],
         }),
         new MiniCssExtractPlugin({
             filename: 'style.css',
+        }),
+        new webpack.DefinePlugin({
+            PROJECT_VER: JSON.stringify(PACKAGE.version),
         }),
         new HTMLInlineCSSWebpackPlugin(),
     ],

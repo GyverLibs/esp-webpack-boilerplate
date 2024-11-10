@@ -47,15 +47,15 @@ void setup() {
 
         switch (req.path().hash()) {
             case su::SH("/"):
-                server.sendFile_P(my_project_index, my_project_index_len, "text/html", false, true);
+                server.sendFile_P(my_project_index, sizeof(my_project_index), "text/html", false, true);
                 break;
 
             case su::SH("/script.js"):
-                server.sendFile_P(my_project_script, my_project_script_len, "text/javascript", true, true);
+                server.sendFile_P(my_project_script, sizeof(my_project_script), "text/javascript", true, true);
                 break;
 
             case su::SH("/style.css"):
-                server.sendFile_P(my_project_style, my_project_style_len, "text/css", true, true);
+                server.sendFile_P(my_project_style, sizeof(my_project_style), "text/css", true, true);
                 break;
         }
     });

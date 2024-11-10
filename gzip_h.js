@@ -57,8 +57,8 @@ async function compile() {
             if (i < data.length - 2) code += ', ';
         }
         code += '\r\n};\r\n'
-        code += `const size_t ${pkg.name}_${fname}_len = ${data.length / 2};`;
-        code += '\r\n'
+        // code += `const size_t ${pkg.name}_${fname}_len = ${data.length / 2};`;
+        // code += '\r\n'
         return code;
     }
 

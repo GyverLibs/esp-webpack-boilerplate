@@ -1,6 +1,7 @@
 {
   "name": "my_project",
   "title": "App name",
+  "single_name": "index.html",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
