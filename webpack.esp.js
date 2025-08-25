@@ -1,8 +1,10 @@
 const path = require('path');
 const webpack = require("webpack");
 const PACKAGE = require('./package.json');
+const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -11,8 +13,17 @@ module.exports = {
 
     output: {
         filename: 'script.js',
-        path: path.resolve(__dirname, 'dev'),
+        path: path.resolve(__dirname, 'dist/esp'),
         clean: true,
+        publicPath: '',
+    },
+
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin(),
+            new TerserPlugin(),
+        ],
     },
 
     module: {
@@ -27,6 +38,9 @@ module.exports = {
             {
                 test: /favicon\.svg$/,
                 type: 'asset/resource',
+                generator: {
+                    filename: 'favicon.svg'
+                }
             }
         ]
     },
@@ -34,9 +48,8 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: `./src/index.html`,
-            filename: `index.html`,
             inject: true,
-            minify: false,
+            hash: true,
             version: PACKAGE.version,
             title: PACKAGE.title,
         }),
@@ -49,16 +62,5 @@ module.exports = {
         }),
     ],
 
-    devServer: {
-        watchFiles: ['src/*.html'],
-        static: path.resolve(__dirname, './dev'),
-        hot: true,
-        open: true,
-    },
-
-    watchOptions: {
-        poll: 1000,
-    },
-
-    mode: 'development',
+    mode: 'production',
 };

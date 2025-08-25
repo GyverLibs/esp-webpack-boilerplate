@@ -36,28 +36,31 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     "css-loader"
                 ]
-            }
+            },
+            {
+                test: /favicon.svg$/,
+                type: 'asset/inline',
+            },
         ]
     },
 
     plugins: [
         new HtmlWebpackPlugin({
             template: `./src/index.html`,
-            // filename: `index.html`,
-            filename: PACKAGE.single_name,
             inject: true,
+            filename: PACKAGE.name + '.html',
             version: PACKAGE.version,
             title: PACKAGE.title,
         }),
         new HtmlInlineScriptPlugin({
-            // htmlMatchPattern: [/index.html$/],
-            htmlMatchPattern: [new RegExp(`${PACKAGE.single_name}$`)],
+            htmlMatchPattern: [new RegExp(`${PACKAGE.name + '.html'}$`)],
         }),
         new MiniCssExtractPlugin({
             filename: 'style.css',
         }),
         new webpack.DefinePlugin({
-            PROJECT_VER: JSON.stringify(PACKAGE.version),
+            APP_VER: JSON.stringify(PACKAGE.version),
+            USE_SW: JSON.stringify(false),
         }),
         new HTMLInlineCSSWebpackPlugin(),
     ],

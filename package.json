@@ -1,12 +1,15 @@
 {
-  "name": "my_project",
+  "name": "app_name",
   "title": "App name",
-  "single_name": "index.html",
-  "version": "1.0.0",
+  "descr": "App description",
+  "theme_color": "#478be6",
+  "background_color": "#1C2128",
+  "version": "1.0.6",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config ./webpack.single.js & webpack --config ./webpack.index.js",
-    "postbuild": "node gzip_h.js",
+    "build_single": "webpack --config ./webpack.single.js",
+    "build_esp": "webpack --config ./webpack.esp.js && node gzip.js",
+    "build": "webpack --config ./webpack.index.js",
     "dev": "webpack serve --config ./webpack.dev.js & webpack --config ./webpack.dev.js"
   },
   "keywords": [],
@@ -14,15 +17,18 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "webpack": "^5.101.3",
     "css-loader": "^7.1.2",
-    "css-minimizer-webpack-plugin": "^7.0.0",
+    "webpack-cli": "^6.0.1",
+    "style-loader": "^4.0.0",
+    "webpack-dev-server": "^5.2.2",
+    "html-webpack-plugin": "^5.6.4",
+    "copy-webpack-plugin": "^13.0.1",
+    "mini-css-extract-plugin": "^2.9.4",
+    "css-minimizer-webpack-plugin": "^7.0.2",
     "html-inline-css-webpack-plugin": "^1.11.2",
     "html-inline-script-webpack-plugin": "^3.2.1",
-    "html-webpack-plugin": "^5.6.0",
-    "mini-css-extract-plugin": "^2.9.0",
-    "style-loader": "^4.0.0",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
-  }
+    "replace-hash-in-file-webpack-plugin": "^1.0.8"
+  },
+  "dependencies": {}
 }
