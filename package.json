@@ -1,10 +1,10 @@
 {
   "name": "app_name",
   "title": "App name",
-  "descr": "App description",
+  "description": "App description",
   "theme_color": "#478be6",
   "background_color": "#1C2128",
-  "version": "1.0.6",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "build_single": "webpack --config ./webpack.single.js",
@@ -15,7 +15,6 @@
   "keywords": [],
   "author": "AlexGyver",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "webpack": "^5.101.3",
     "css-loader": "^7.1.2",
@@ -30,5 +29,7 @@
     "html-inline-script-webpack-plugin": "^3.2.1",
     "replace-hash-in-file-webpack-plugin": "^1.0.8"
   },
-  "dependencies": {}
+  "dependencies": {
+
+  }
 }

@@ -98,8 +98,8 @@ module.exports = {
                         replace: PACKAGE.title,
                     },
                     {
-                        search: /@descr/,
-                        replace: PACKAGE.descr,
+                        search: /@description/,
+                        replace: PACKAGE.description,
                     },
                 ]
             }

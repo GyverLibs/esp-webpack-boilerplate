@@ -1,1 +1,1 @@
-(()=>{"use strict";document.addEventListener("DOMContentLoaded",()=>{"serviceWorker"in navigator&&navigator.serviceWorker.register("sw.js");let e=document.createElement("h1");e.innerText="Hello, World! 1.0.6",document.body.append(e)})})();
+(()=>{"use strict";document.addEventListener("DOMContentLoaded",()=>{"serviceWorker"in navigator&&navigator.serviceWorker.register("sw.js");let e=document.createElement("h1");e.innerText="Hello, World! 1.0.0",document.body.append(e)})})();
