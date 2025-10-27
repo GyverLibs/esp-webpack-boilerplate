@@ -27,7 +27,7 @@
 ## Как собрать
 - Установить [VS Code](https://code.visualstudio.com/download)
 - Установить [Node JS](https://nodejs.org/en/download/prebuilt-installer)
-- Опционально установить расширение `Script Buttons` для VS Code
+- Опционально установить расширение Script Buttons `jackwaterfall.script-buttons` для VS Code (кнопки вместо консольных команд)
 - Открыть папку в VS Code (перетащить в окно VS Code)
 - Консоль **Ctrl + `**
 - `npm install`, дождаться установки зависимостей

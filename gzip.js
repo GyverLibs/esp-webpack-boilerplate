@@ -70,7 +70,7 @@ async function compile() {
     code += addBin('favicon', favicon_gz);
 
     fs.writeFile(`${out_folder}/${pkg.name}.h`, code, err => {
-        if (err) console.error(err);
+        if (err) console.error("❌ Error! " + err);
         else console.log('✅ Done! Gzipped to ' + ((index_len + script_len + style_len + favicon_len) / 1024).toFixed(2) + ' kB');
     });
 }
