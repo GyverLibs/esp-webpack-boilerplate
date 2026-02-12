@@ -9,7 +9,11 @@ const { pipeline } = require('node:stream');
 const pipe = promisify(pipeline);
 
 async function gzip(input, output) {
-    const gzip = createGzip();
+    if (!fs.existsSync(input)) {
+        fs.writeFileSync(output, Buffer.alloc(0));
+        return;
+    }
+    const gzip = createGzip({level: 9});
     const source = fs.createReadStream(input);
     const destination = fs.createWriteStream(output);
     await pipe(source, gzip, destination);
